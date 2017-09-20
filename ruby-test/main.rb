@@ -81,16 +81,14 @@ food.each { |chiave, valore| puts chiave + "=" + valore.to_s }
     res[value] += 1
 end
 #si può simulare un for tramite l'uso della struttura
-(1...100).each do { |value| res[value] += 1
+(1...100).each { |value| res[value] += 1 }
 #map fa un ciclo nella collezione e crea un array con all'interno i valori modificati hai la certezza
 #della stessa lunghezza
 #to_s converte in una stringa
 puts food.map { |chiave, valore| chiave + ":" + valore.to_s }
-#esiste anche la versione che sostituiscela variabile come per il sort
-food.map! { |chiave, valore| chiave + ":" + valore.to_s }
 #select estra alcuni numeri
 #even dice se è pari oppure no
-puts [10,40,43,32].select do { |value| value.even? }
+puts [10,40,43,32].select { |value| value.even? }
 #reduce è utile per fare una serie di operazioni carraterizate da una accumulazione che viene restituita alla fine
 (1..100).reduce(0) { |n, acc| acc += n; n }
 #operazioni condizionali
@@ -112,6 +110,11 @@ else
   "The string is nonempty and its length is more than 4"
 end
 #there are the word unless to indicate negation
-puts "x is not empty" if !x.empty?
-#is equal to the use of empty
-puts "x is not empty" unless food.empty?
+puts "food is not empty (if after)" if !food.empty?
+#it can be before or after
+#the {} syntax isn't admitted
+if !food.empty? then
+    puts "food is not empty (if block)"
+end
+#is equal to the use of negation
+puts "food is not empty (unless)" unless food.empty?
