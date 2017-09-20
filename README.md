@@ -1,5 +1,4 @@
 # Ingegneria del software 2
-<<<<<<< HEAD
 [![Build Status](https://travis-ci.org/jessical97/Ingegneria-del-software-2.svg?branch=master)](https://travis-ci.org/jessical97/Ingegneria-del-software-2)
 ##Componenti del gruppo
 *Matteo Bortolon
