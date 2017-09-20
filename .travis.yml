@@ -1,0 +1,24 @@
+dist: trusty
+
+sudo: required
+
+language: ruby
+
+branches:
+  only:
+    - master
+
+matrix:
+  include:
+    - rvm: 2.4.0
+      jdk: oraclejdk8
+
+before_install:
+  - gem update --system
+  - gem --version
+
+script:
+  - ruby -c ruby-test/main.rb
+
+notifications:
+  disable: true
