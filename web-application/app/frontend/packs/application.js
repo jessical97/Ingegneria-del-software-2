@@ -7,3 +7,4 @@
 // layout file, like app/views/layouts/application.html.erb
 
 require('../stylesheets/application.css');
+require('jquery-ujs');

@@ -5,12 +5,19 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
+    @clients = Client.all.map do |t|
+      element = t.becomes(Client)
+      element[:type] = (element[:type] == :BusinessClient ? 1 : 0)
+      element
+    end
   end
 
   # GET /clients/1
   # GET /clients/1.json
-  def show; end
+  def show
+    element = @client.becomes(Client)
+    element[:type] = (element[:type] == :BusinessClient ? 1 : 0)
+  end
 
   # GET /clients/new
   def new
@@ -18,11 +25,15 @@ class ClientsController < ApplicationController
   end
 
   # GET /clients/1/edit
-  def edit; end
+  def edit
+    element = @client.becomes(Client)
+    element[:type] = (element[:type] == :BusinessClient ? 1 : 0)
+    @client = element
+  end
 
   def correct_execution(format, message, status)
     format.html do
-      redirect_to @client,
+      redirect_to @client.becomes(Client),
                   notice: message
     end
     format.json { render :show, status: status, location: @client }
@@ -36,11 +47,27 @@ class ClientsController < ApplicationController
     end
   end
 
+  def client_conversion(parameter)
+    type = parameter[:type]
+    new_params = parameter.except(:type)
+    if type == "0"
+      @client = Client::PrivateClient.new(new_params)
+    else
+      Client::BusinessClient.new(new_params)
+    end
+  end
+
+  def client_params_conversion(parameter)
+    type = parameter[:type]
+    new_params = parameter.except(:type)
+    new_params[:type] = type == "0" ? :PrivateClient : :BusinessClient
+    new_params
+  end
+
   # POST /clients
   # POST /clients.json
   def create
-    @client = Client.new(client_params)
-
+    client_conversion client_params
     respond_to do |format|
       if @client.save
         correct_execution format, 'Client was successfully created.', :created
@@ -54,7 +81,8 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1.json
   def update
     respond_to do |format|
-      if @client.update(client_params)
+      update_params = client_params_conversion(client_params)
+      if @client.update(update_params.except(:type))
         correct_execution format, 'Client was successfully updated.', :ok
       else
         error_execution format, :edit
@@ -65,7 +93,9 @@ class ClientsController < ApplicationController
   # DELETE /clients/1
   # DELETE /clients/1.json
   def destroy
-    @client.destroy
+    client = @client.becomes(Client)
+    frescoEVario
+    client.destroy
     respond_to do |format|
       format.html do
         redirect_to clients_url,

@@ -9,6 +9,7 @@ before_script:
   - which ruby
   - gem install bundler --no-ri --no-rdoc
   - bundle install --quiet --jobs $(nproc) --path /cache
+  - rails webpacker:compile
   - bundle exec rake db:migrate --quiet
   - bundle exec rake db:test:prepare --quiet
 

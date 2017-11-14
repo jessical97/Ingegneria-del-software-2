@@ -1,2 +1,0 @@
-class PrivateClient < Client
-end
