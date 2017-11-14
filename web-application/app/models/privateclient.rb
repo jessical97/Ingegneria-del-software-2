@@ -1,0 +1,2 @@
+class PrivateClient < Client
+end

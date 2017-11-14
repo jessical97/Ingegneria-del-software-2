@@ -1,0 +1,25 @@
+services:
+  - mysql:latest
+
+before_script:
+  - apt-get update -qy
+  - apt-get install -y nodejs
+  - cd fortune
+  - ruby -v
+  - which ruby
+  - gem install bundler --no-ri --no-rdoc
+  - bundle install --quiet --jobs $(nproc) --path /cache
+  - bundle exec rake db:migrate --quiet
+  - bundle exec rake db:test:prepare --quiet
+
+rspec:
+  script:
+    - rspec
+
+brakeman:
+  script:
+    - bundle exec brakeman -z -q
+
+rubocop:
+  script:
+    - bundle exec rubocop
