@@ -6,5 +6,11 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
+import turbolinks from 'turbolinks';
+import jQuery from 'jquery'; // eslint-disable-line no-unused-vars
+
 require('../stylesheets/application.css');
+require('jquery');
 require('jquery-ujs');
+
+turbolinks.start();

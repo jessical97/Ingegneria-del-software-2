@@ -94,7 +94,6 @@ class ClientsController < ApplicationController
   # DELETE /clients/1.json
   def destroy
     client = @client.becomes(Client)
-    frescoEVario
     client.destroy
     respond_to do |format|
       format.html do
