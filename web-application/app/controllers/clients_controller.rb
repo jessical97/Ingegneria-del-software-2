@@ -50,7 +50,7 @@ class ClientsController < ApplicationController
   def client_conversion(parameter)
     type = parameter[:type]
     new_params = parameter.except(:type)
-    if type == "0"
+    if type == '0'
       @client = Client::PrivateClient.new(new_params)
     else
       Client::BusinessClient.new(new_params)
@@ -60,7 +60,7 @@ class ClientsController < ApplicationController
   def client_params_conversion(parameter)
     type = parameter[:type]
     new_params = parameter.except(:type)
-    new_params[:type] = type == "0" ? :PrivateClient : :BusinessClient
+    new_params[:type] = type == '0' ? :PrivateClient : :BusinessClient
     new_params
   end
 

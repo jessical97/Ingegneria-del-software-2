@@ -1,17 +1,30 @@
+image: ruby:latest
+
 services:
   - mysql:latest
 
+variables:
+  # Configure mysql environment variables (https://hub.docker.com/r/_/mysql/)
+  MYSQL_DATABASE: fortune_test
+  MYSQL_ROOT_PASSWORD: fortune
+
 before_script:
   - apt-get update -qy
-  - apt-get install -y nodejs
+  - apt-get -qq -y install curl
+  - curl -sL https://deb.nodesource.com/setup_8.x | bash -
+  - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+  - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+  - apt-get update -qy
+  - apt-get install -y nodejs yarn build-essential
   - cd web-application
   - ruby -v
   - which ruby
   - gem install bundler --no-ri --no-rdoc
   - bundle install --quiet --jobs $(nproc) --path /cache
+  - yarn
   - rails webpacker:compile
-  - bundle exec rake db:migrate --quiet
-  - bundle exec rake db:test:prepare --quiet
+  - bundle exec rake RAILS_ENV=test db:migrate --quiet
+  - bundle exec rake RAILS_ENV=test db:test:prepare --quiet
 
 rspec:
   script:
