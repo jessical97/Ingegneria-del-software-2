@@ -4,7 +4,7 @@ services:
 before_script:
   - apt-get update -qy
   - apt-get install -y nodejs
-  - cd fortune
+  - cd web-application
   - ruby -v
   - which ruby
   - gem install bundler --no-ri --no-rdoc
