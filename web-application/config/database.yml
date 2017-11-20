@@ -20,7 +20,7 @@ development:
   username: fortune
   password: fortune
   host: 127.0.0.1
-  port: 8889
+  port: 3306
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

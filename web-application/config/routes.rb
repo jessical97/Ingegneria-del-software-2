@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'startup/index'
+
   resources :bills
   resources :activities
   resources :clients
