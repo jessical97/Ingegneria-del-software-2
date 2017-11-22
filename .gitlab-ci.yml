@@ -23,8 +23,8 @@ before_script:
   - bundle install --quiet --jobs $(nproc) --path /cache
   - rake yarn:install
   - rails webpacker:compile
-  - bundle exec rake db:migrate --quiet
-  - bundle exec rake db:test:prepare --quiet
+  - bundle exec rake RAILS_ENV=test db:migrate --quiet
+  - bundle exec rake RAILS_ENV=test db:test:prepare --quiet
 
 rspec:
   script:

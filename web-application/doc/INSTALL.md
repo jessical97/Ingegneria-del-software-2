@@ -6,7 +6,7 @@
 
 * **System dependencies:**
 
-   This application require *MySql*, *MySql client C lib*, *nodeJS >= 8.0.0*, *Yarn* to be compiled
+   This application require *Rails*, *MySQL*, *MySQL C client lib*, *nodeJS >= 8.0.0*, *Yarn* to be compiled. For the part about Rails and MySQL you can execute the guide at https://gorails.com/setup/ and execute the part about MySQL
 
 * **Configuration file:**
 

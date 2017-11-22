@@ -4,6 +4,7 @@
   "dependencies": {
     "@rails/webpacker": "^3.0.2",
     "babel-eslint": "^8.0.2",
+    "bootstrap": "^3.3.7",
     "coffeescript": "1.12.7",
     "eslint": "^4.11.0",
     "eslint-config-airbnb-base": "^12.1.0",

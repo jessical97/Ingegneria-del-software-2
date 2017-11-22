@@ -1,5 +1,19 @@
-<h1>New Client</h1>
+<br>
+<br>
+<br>
+<!-- Client new Section -->
+<section id="contact">
+  <div class="container">
+    <h2 class="text-center">New Client</h2>
+    <hr class="star-primary">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <p id="notice"><%= notice %></p>
+        <%= render 'form', client: @client %>
 
-<%= render 'form', client: @client %>
-
-<%= link_to 'Back', clients_path %>
+        <%= link_to 'Back', clients_path %>
+      </div>
+    </div>
+  </div>
+</section>
+<br>

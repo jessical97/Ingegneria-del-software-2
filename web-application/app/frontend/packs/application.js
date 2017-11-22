@@ -12,5 +12,6 @@ import jQuery from 'jquery'; // eslint-disable-line no-unused-vars
 require('../stylesheets/application.css');
 require('jquery');
 require('jquery-ujs');
+require('bootstrap');
 
 turbolinks.start();
