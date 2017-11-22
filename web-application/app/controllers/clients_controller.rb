@@ -1,14 +1,15 @@
+require "#{Rails.root}/lib/controller_formatter/client_formatter"
+
 # All the function neccesary to answer to rest request about clients
 class ClientsController < ApplicationController
+  include ClientFormatter
   before_action :set_client, only: %I[show edit update destroy]
 
   # GET /clients
   # GET /clients.json
   def index
     @clients = Client.all.map do |t|
-      element = t.becomes(Client)
-      element[:type] = (element[:type] == :BusinessClient ? 1 : 0)
-      element
+      ClientFormatter.client_showing(t)
     end
   end
 
@@ -50,17 +51,17 @@ class ClientsController < ApplicationController
   def client_conversion(parameter)
     type = parameter[:type]
     new_params = parameter.except(:type)
-    if type == "0"
-      @client = Client::PrivateClient.new(new_params)
-    else
-      Client::BusinessClient.new(new_params)
-    end
+    @client = if type == '0'
+                PrivateClient.new(new_params)
+              else
+                BusinessClient.new(new_params)
+              end
   end
 
   def client_params_conversion(parameter)
     type = parameter[:type]
     new_params = parameter.except(:type)
-    new_params[:type] = type == "0" ? :PrivateClient : :BusinessClient
+    new_params[:type] = type == '0' ? :PrivateClient : :BusinessClient
     new_params
   end
 
@@ -72,6 +73,7 @@ class ClientsController < ApplicationController
       if @client.save
         correct_execution format, 'Client was successfully created.', :created
       else
+        @client = @client.becomes(Client)
         error_execution format, :new
       end
     end

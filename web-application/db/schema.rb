@@ -1,4 +1,3 @@
-# rubocop:disable all
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -13,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20171113071311) do
 
-  create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.decimal "hours", precision: 10
     t.bigint "client_id"
     t.datetime "created_at", null: false
@@ -21,7 +20,7 @@ ActiveRecord::Schema.define(version: 20171113071311) do
     t.index ["client_id"], name: "index_activities_on_client_id"
   end
 
-  create_table "bills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "bills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.decimal "import", precision: 10
     t.bigint "client_id"
     t.datetime "created_at", null: false
@@ -29,7 +28,7 @@ ActiveRecord::Schema.define(version: 20171113071311) do
     t.index ["client_id"], name: "index_bills_on_client_id"
   end
 
-  create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "type"
     t.string "act_primary"
     t.string "act_secondary"
@@ -47,4 +46,3 @@ ActiveRecord::Schema.define(version: 20171113071311) do
   add_foreign_key "activities", "clients"
   add_foreign_key "bills", "clients"
 end
-# rubocop:enable all

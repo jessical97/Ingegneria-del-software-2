@@ -1,6 +1,9 @@
 */.vscode/**
 .vscode
 /first-assignment/*
+.DS_Store
+# Ignore database config file
+# web-application/config/database.yml
 
 *.rbc
 capybara-*.html

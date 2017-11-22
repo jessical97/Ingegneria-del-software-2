@@ -20,14 +20,17 @@ development:
   username: fortune
   password: fortune
   host: 127.0.0.1
-  port: 8889
+  port: 3306
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
+test: &test
   <<: *default
-  database: web-application_test
+  host: mysql
+  database: fortune_test
+  username: root
+  password: fortune
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -53,3 +56,11 @@ production:
   database: web-application_production
   username: web-application
   password: <%= ENV['WEB-APPLICATION_DATABASE_PASSWORD'] %>
+
+test_local:
+  <<: *test
+  host: 127.0.0.1
+  database: fortune_test
+  username: fortune
+  password: fortune
+  port: 3306
