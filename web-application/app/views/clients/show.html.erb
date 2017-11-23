@@ -1,44 +1,59 @@
-<p id="notice"><%= notice %></p>
+<br>
+<br>
+<br>
+<!-- Show Client Section -->
+<section id="contact">
+  <div class="container">
+    <h2 class="text-center">Client</h2>
+    <hr class="star-primary">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Type:</strong>
-  <%= @client.type %>
-</p>
+        <p>
+          <strong>Type:</strong>
+          <%= @client.type %>
+        </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @client.name %>
-</p>
+        <p>
+          <strong>Name:</strong>
+          <%= @client.name %>
+        </p>
 
-<p>
-  <strong>Surname:</strong>
-  <%= @client.surname %>
-</p>
+        <p>
+          <strong>Surname:</strong>
+          <%= @client.surname %>
+        </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @client.address %>
-</p>
+        <p>
+          <strong>Address:</strong>
+          <%= @client.address %>
+        </p>
 
-<p>
-  <strong>Cap:</strong>
-  <%= @client.cap %>
-</p>
+        <p>
+          <strong>Cap:</strong>
+          <%= @client.cap %>
+        </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @client.city %>
-</p>
+        <p>
+          <strong>City:</strong>
+          <%= @client.city %>
+        </p>
 
-<p>
-  <strong>Country:</strong>
-  <%= @client.country %>
-</p>
+        <p>
+          <strong>Country:</strong>
+          <%= @client.country %>
+        </p>
 
-<p>
-  <strong>Ssn:</strong>
-  <%= @client.ssn %>
-</p>
+        <p>
+          <strong>Ssn:</strong>
+          <%= @client.ssn %>
+        </p>
 
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+        <%= link_to 'Edit', edit_client_path(@client) %> |
+        <%= link_to 'Back', clients_path %>
+      </div>
+    </div>
+  </div>
+</section>
+<br>

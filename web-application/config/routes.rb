@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'startup/index'
+  root :to => 'startup#index'
 
   resources :bills
   resources :activities
