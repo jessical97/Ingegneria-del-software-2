@@ -3,6 +3,7 @@ Feature: create a client
   As a user
   I want to create a new client
 
+  @no-txn
   Scenario: create a valid private client
     Given I am on the list of clients
     When I click on "New Client"
@@ -12,9 +13,8 @@ Feature: create a client
     And I select in the "Country" dropdown "Italy"
     And I click on "Create Client"
     Then I must find client in list
-    |Name |Surname|Address       |Cap  |City  |Ssn             |
-    |Mario|Rossi  |Via Milano, 15|31030|Milano|RSSMRA55T08F205C|
 
+  @no-txn
   Scenario: create a private client with invalid Name
     Given I am on the list of clients
     When I click on "New Client"
@@ -25,6 +25,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: try to create a private client without Name
     Given I am on the list of clients
     When I click on "New Client"
@@ -35,6 +36,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
     
+  @no-txn
   Scenario: try to create a private client with invalid Surname
     Given I am on the list of clients
     When I click on "New Client"
@@ -45,6 +47,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: try to create a private client without Surname
     Given I am on the list of clients
     When I click on "New Client"
@@ -55,6 +58,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: try to create a private client without Address
     Given I am on the list of clients
     When I click on "New Client"
@@ -65,6 +69,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: try to create a private client with invalid CAP
     Given I am on the list of clients
     When I click on "New Client"
@@ -75,6 +80,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: try to create a private client without CAP
     Given I am on the list of clients
     When I click on "New Client"
@@ -85,6 +91,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: try to create a private client without City
     Given I am on the list of clients
     When I click on "New Client"
@@ -95,6 +102,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: try to create a private client without Country
     Given I am on the list of clients
     When I click on "New Client"
@@ -104,6 +112,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: create a private client with invalid SSN
     Given I am on the list of clients
     When I click on "New Client"
@@ -114,6 +123,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: try to create a private client without SSN
     Given I am on the list of clients
     When I click on "New Client"
@@ -124,6 +134,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
     
+  @no-txn
   Scenario: create a valid public client
     Given I am on the list of clients
     When I click on "New Client"
@@ -134,20 +145,8 @@ Feature: create a client
     And I select in the "Country" dropdown "Italy"
     And I click on "Create Client"
     Then I must find client in list
-    |Name |Address       |Cap  |City  |Ssn        |
-    |Tarlo|Via Torino, 15|25078|Torino|00488410010|
 
-  Scenario: create a public client with invalid Name
-    Given I am on the list of clients
-    When I click on "New Client"
-    And I check the "Type" option
-    And I fill in the form
-    |Name  |Address       |Cap  |City  |Ssn        |
-    |Tarlo8|Via Torino, 15|25078|Torino|00488410010|
-    And I select in the "Country" dropdown "Italy"
-    And I click on "Create Client"
-    Then I must see an error
-
+  @no-txn
   Scenario: try to create a public client without Name
     Given I am on the list of clients
     When I click on "New Client"
@@ -159,6 +158,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: try to create a public client without Address
     Given I am on the list of clients
     When I click on "New Client"
@@ -170,6 +170,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: try to create a public client with invalid CAP
     Given I am on the list of clients
     When I click on "New Client"
@@ -181,6 +182,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: try to create a public client without CAP
     Given I am on the list of clients
     When I click on "New Client"
@@ -192,6 +194,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: try to create a public client without City
     Given I am on the list of clients
     When I click on "New Client"
@@ -203,6 +206,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: try to create a public client without Country
     Given I am on the list of clients
     When I click on "New Client"
@@ -213,6 +217,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: create a public client with invalid SSN
     Given I am on the list of clients
     When I click on "New Client"
@@ -224,6 +229,7 @@ Feature: create a client
     And I click on "Create Client"
     Then I must see an error
 
+  @no-txn
   Scenario: try to create a public client without SSN
     Given I am on the list of clients
     When I click on "New Client"

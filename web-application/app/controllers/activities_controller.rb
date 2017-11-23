@@ -6,11 +6,17 @@ class ActivitiesController < ApplicationController
   # GET /activities.json
   def index
     @activities = Activity.all
+    @clients_names = {};
+    @activities.each do |value|
+      @clients_names[value.client_id] = Client.find(value.client_id).complete_name;
+    end
   end
 
   # GET /activities/1
   # GET /activities/1.json
-  def show; end
+  def show
+    @client_name = Client.find(@activity.client_id).complete_name;
+  end
 
   # GET /activities/new
   def new
@@ -22,7 +28,7 @@ class ActivitiesController < ApplicationController
 
   def correct_execution(format, message, status)
     format.html do
-      redirect_to @bill,
+      redirect_to @activity,
                   notice: message
     end
     format.json { render :show, status: status, location: @activity }
@@ -40,7 +46,6 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(activity_params)
-
     respond_to do |format|
       if @activity.save
         correct_execution format, 'Activity was successfully created.', :created

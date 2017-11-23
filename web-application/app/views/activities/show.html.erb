@@ -7,7 +7,12 @@
 
 <p>
   <strong>Client:</strong>
-  <%= @activity.client %>
+  <%= @client_name %>
+</p>
+
+<p>
+  <strong>Registered At:</strong>
+  <%= @activity.created_at %>
 </p>
 
 <%= link_to 'Edit', edit_activity_path(@activity) %> |

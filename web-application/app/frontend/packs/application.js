@@ -13,5 +13,6 @@ require('../stylesheets/application.css');
 require('jquery');
 require('jquery-ujs');
 require('bootstrap');
+require('select2');
 
 turbolinks.start();
