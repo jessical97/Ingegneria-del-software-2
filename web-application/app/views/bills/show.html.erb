@@ -1,14 +1,29 @@
-<p id="notice"><%= notice %></p>
+<br>
+<br>
+<br>
+<!-- Show Bills Section -->
+<section id="contact">
+  <div class="container">
+    <h2 class="text-center">Bill</h2>
+    <hr class="star-primary">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Import:</strong>
-  <%= @bill.import %>
-</p>
+        <p>
+          <strong>Import:</strong>
+          <%= @bill.import %>
+        </p>
 
-<p>
-  <strong>Client:</strong>
-  <%= @bill.client %>
-</p>
+        <p>
+          <strong>Client:</strong>
+          <%= @bill.client %>
+        </p>
 
-<%= link_to 'Edit', edit_bill_path(@bill) %> |
-<%= link_to 'Back', bills_path %>
+        <%= link_to 'Edit', edit_bill_path(@bill) %> |
+        <%= link_to 'Back', bills_path %>
+      </div>
+    </div>
+  </div>
+</section>
+<br>

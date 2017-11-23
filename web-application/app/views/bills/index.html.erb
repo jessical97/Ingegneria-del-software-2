@@ -1,40 +1,51 @@
 <br>
 <br>
 <br>
+
 <!-- Bill Section -->
 <section id="contact">
   <div class="container">
     <h2 class="text-center">Bills</h2>
     <hr class="star-primary">
+
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
     <div class="row">
       <div class="col-lg-8 mx-auto">
-        <p id="notice"><%= notice %></p>
-        <table>
-          <thead>
-            <tr>
-              <th>Import</th>
-              <th>Client</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
+        <div class="container-fluid">
+          <p id="notice"><%= notice %></p>
+          <table class="table table-striped">
+            <thead>
 
-          <tbody>
-            <% @bills.each do |bill| %>
               <tr>
-                <td><%= bill.import %></td>
-                <td><%= bill.client %></td>
-                <td><%= link_to 'Show', bill %></td>
-                <td><%= link_to 'Edit', edit_bill_path(bill) %></td>
-                <td><%= link_to 'Destroy', bill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <th>Import</th>
+                <th>Client</th>
+                <th colspan="3"></th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+
+            </thead>
+
+            <tbody>
+
+              <% @bills.each do |bill| %>
+                <tr>
+                  <td><%= bill.import %></td>
+                  <td><%= bill.client %></td>
+                  <td><%= link_to 'Show', bill %></td>
+                  <td><%= link_to 'Edit', edit_bill_path(bill) %></td>
+                  <td><%= link_to 'Destroy', bill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+
+            </tbody>
+          </table>
+        </div>
 
         <br>
-
         <%= link_to 'New Bill', new_bill_path %>
-
       </div>
     </div>
   </div>

@@ -1,14 +1,29 @@
-<p id="notice"><%= notice %></p>
+<br>
+<br>
+<br>
+<!-- Show Activities Section -->
+<section id="contact">
+  <div class="container">
+    <h2 class="text-center">Activity</h2>
+    <hr class="star-primary">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Hours:</strong>
-  <%= @activity.hours %>
-</p>
+        <p>
+          <strong>Hours:</strong>
+          <%= @activity.hours %>
+        </p>
 
-<p>
-  <strong>Client:</strong>
-  <%= @activity.client %>
-</p>
+        <p>
+          <strong>Client:</strong>
+          <%= @activity.client %>
+        </p>
 
-<%= link_to 'Edit', edit_activity_path(@activity) %> |
-<%= link_to 'Back', activities_path %>
+        <%= link_to 'Edit', edit_activity_path(@activity) %> |
+        <%= link_to 'Back', activities_path %>
+      </div>
+    </div>
+  </div>
+</section>
+<br>

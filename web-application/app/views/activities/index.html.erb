@@ -1,39 +1,53 @@
+
 <br>
 <br>
 <br>
 
-<!-- Activities Section -->
+<!-- Bill Section -->
 <section id="contact">
   <div class="container">
     <h2 class="text-center">Activities</h2>
     <hr class="star-primary">
+
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
     <div class="row">
       <div class="col-lg-8 mx-auto">
-        <p id="notice"><%= notice %></p>
-        <table>
-          <thead>
-            <tr>
-              <th>Hours</th>
-              <th>Client</th>
-              <th colspan="3"></th>
-            </tr>
-          </thead>
+        <div class="container-fluid">
 
-          <tbody>
-            <% @activities.each do |activity| %>
+          <p id="notice"><%= notice %></p>
+
+          <table class="table table-striped">
+            <thead>
+
               <tr>
-                <td><%= activity.hours %></td>
-                <td><%= activity.client %></td>
-                <td><%= link_to 'Show', activity %></td>
-                <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-                <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <th>Hours</th>
+                <th>Client</th>
+                <th colspan="3"></th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
+
+            </thead>
+
+            <tbody>
+
+              <% @activities.each do |activity| %>
+                <tr>
+                  <td><%= activity.hours %></td>
+                  <td><%= activity.client %></td>
+                  <td><%= link_to 'Show', activity %></td>
+                  <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+                  <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+
+            </tbody>
+          </table>
+        </div>
 
         <br>
-
         <%= link_to 'New Activity', new_activity_path %>
       </div>
     </div>

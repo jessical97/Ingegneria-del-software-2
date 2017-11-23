@@ -1,6 +1,19 @@
-<h1>Editing Bill</h1>
+<br>
+<br>
+<br>
+<!-- Editing Bill Section -->
+<section id="contact">
+  <div class="container">
+    <h2 class="text-center">Editing Bill</h2>
+    <hr class="star-primary">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <%= render 'form', bill: @bill %>
 
-<%= render 'form', bill: @bill %>
-
-<%= link_to 'Show', @bill %> |
-<%= link_to 'Back', bills_path %>
+        <%= link_to 'Show', @bill %> |
+        <%= link_to 'Back', bills_path %>
+      </div>
+    </div>
+  </div>
+</section>
+<br>

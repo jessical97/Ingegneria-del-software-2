@@ -1,6 +1,19 @@
-<h1>Editing Activity</h1>
+<br>
+<br>
+<br>
+<!-- Editing Activities Section -->
+<section id="contact">
+  <div class="container">
+    <h2 class="text-center">Editing Activities</h2>
+    <hr class="star-primary">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <%= render 'form', activity: @activity %>
 
-<%= render 'form', activity: @activity %>
-
-<%= link_to 'Show', @activity %> |
-<%= link_to 'Back', activities_path %>
+        <%= link_to 'Show', @activity %> |
+        <%= link_to 'Back', activities_path %>
+      </div>
+    </div>
+  </div>
+</section>
+<br>
