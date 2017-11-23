@@ -1,27 +1,6 @@
-<%= form_with(model: bill, local: true) do |form| %>
-  <% if bill.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(bill.errors.count, "error") %> prohibited this bill from being saved:</h2>
-
-      <ul>
-      <% bill.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :import %>
-    <%= form.text_field :import, id: :bill_import %>
-  </div>
-
-  <div class="field">
-    <%= form.label :client_id %>
-    <%= form.text_field :client_id, id: :bill_client_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= simple_form_for @bill do |form| %>
+  <%= form.select :client_id, collection: clients_list  %>
+  <%= form.button :submit %>
 <% end %>
+<%= javascript_pack_tag 'activity' %>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" rel="stylesheet">

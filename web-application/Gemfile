@@ -25,6 +25,8 @@ gem 'countries'
 gem 'country_select'
 # To automate the creation of form
 gem 'simple_form'
+# To create PDF
+gem 'wkhtmltopdf-binary'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

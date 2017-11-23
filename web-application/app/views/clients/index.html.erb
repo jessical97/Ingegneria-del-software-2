@@ -34,7 +34,11 @@
                 <td><%= client.ssn %></td>
                 <td><%= link_to 'Show', client %></td>
                 <td><%= link_to 'Edit', edit_client_path(client) %></td>
-                <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% if @not_destroyable_client.key?(client.id) %>
+                  <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% else %>
+                  <td></td>
+                <% end %>
               </tr>
             <% end %>
           </tbody>

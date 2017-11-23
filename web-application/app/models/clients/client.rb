@@ -2,6 +2,9 @@
 class Client < ApplicationRecord
   VALID_CAP = /\A[0-9]{5}\z/i
 
+  has_many :Bill, dependent: :restrict_with_error
+  has_many :Activity, dependent: :restrict_with_error
+
   validates(:address,
             presence: true)
   validates(:cap,

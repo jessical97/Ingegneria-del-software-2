@@ -1,3 +1,7 @@
 import jQuery from 'jquery';
 
-jQuery('#activity_client_id').select2();
+require('select2');
+
+jQuery('#activity_client_id').select2({
+  theme: 'bootstrap',
+});

@@ -8,8 +8,13 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
+    @not_destroyable_client = {}
     @clients = Client.all.map do |t|
-      ClientFormatter.client_showing(t)
+      t = ClientFormatter.client_showing(t)
+      if Bill.where(client_id: t.id).count(:all) + Activity.where(client_id: t.id).count(:all) == 0
+        @not_destroyable_client[t.id] = true
+      end
+      t
     end
   end
 
