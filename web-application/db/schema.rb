@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20171123175848) do
 
-  create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.decimal "hours", precision: 10
     t.bigint "client_id"
     t.datetime "created_at", null: false
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20171123175848) do
     t.index ["client_id"], name: "index_activities_on_client_id"
   end
 
-  create_table "bills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "bills", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.decimal "import", precision: 10
     t.bigint "client_id"
     t.datetime "created_at", null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20171123175848) do
     t.index ["prices_id"], name: "index_bills_on_prices_id"
   end
 
-  create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "type"
     t.string "act_primary"
     t.string "act_secondary"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20171123175848) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "prices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+  create_table "prices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.decimal "import", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

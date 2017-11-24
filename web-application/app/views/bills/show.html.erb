@@ -10,15 +10,22 @@
       <div class="col-lg-8 mx-auto">
         <p id="notice"><%= notice %></p>
 
-        <p>
-          <strong>Import:</strong>
-          <%= @bill.import %>
-        </p>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <p>
+              <strong>Import:</strong>
+              <%= @bill.import %>
+            </p>
+          </li>
+          <li class="list-group-item">
+            <p>
+              <strong>Client:</strong>
+              <%= @bill.client.name %>
+            </p>
+          </li>
+        </ul>
 
-        <p>
-          <strong>Client:</strong>
-          <%= @bill.client %>
-        </p>
+        <br>
 
         <%= link_to 'Edit', edit_bill_path(@bill) %> |
         <%= link_to 'Back', bills_path %>

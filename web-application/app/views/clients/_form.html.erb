@@ -1,4 +1,14 @@
 <%= simple_form_for @client do |form| %>
+
+
+  <div class="btn-group">
+    <button id="private-client-button" type="button" class="btn btn-default">Private Client</button>
+    <button id="public-client-button" type="button" class="btn btn-default">Business Client</button>
+  </div>
+
+  <br>
+  <br>
+
   <%= form.input :type, as: :boolean, boolean_style: :inline %>
   <%= form.input :name %>
   <%= form.input :surname %>
@@ -7,5 +17,11 @@
   <%= form.input :city %>
   <%= form.input(:country, as: :country, priority_countries: ["IT"]) %>
   <%= form.input :ssn %>
+
+  <br>
+
   <%= form.button :submit %>
+
+  <br><br>
 <% end %>
+<%= javascript_pack_tag 'client' %>
