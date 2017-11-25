@@ -1,17 +1,15 @@
-
 <br>
 <br>
-<br>>
-
-<!-- Bill new Section -->
+<br>
+<!-- Client new Section -->
 <section id="contact">
   <div class="container">
-    <h2 class="text-center">New Bill</h2>
+    <h2 class="text-center">New Client</h2>
     <hr class="star-primary">
     <div class="row">
       <div class="col-lg-8 mx-auto">
-        <%= render 'form', bill: @bill %>
-        <%= link_to 'Back', bills_path %>
+        <p id="notice"><%= notice %></p>
+        <%= render 'form', settings: @settings %>
       </div>
     </div>
   </div>

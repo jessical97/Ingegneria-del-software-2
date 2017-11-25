@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root :to => 'startup#index'
 
+  get 'settings', to: 'settings#index'
+  put 'settings', to: 'settings#update'
+
   resources :bills
   resources :activities
   resources :clients

@@ -1,0 +1,7 @@
+<%= form_tag('/settings', method: 'put', multipart: true) do %>
+  <%= label_tag "setting[price]", "Price" %>
+  <%= number_field_tag "setting[price]", settings.price %>
+  <%= label_tag "setting[invoice_template]", "Invoice template" %>
+  <%= file_field_tag "setting[invoice_template]" %>
+  <%= submit_tag 'Submit' %>
+<% end %>

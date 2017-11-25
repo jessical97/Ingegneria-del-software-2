@@ -90,8 +90,10 @@ class ClientsController < ApplicationController
     respond_to do |format|
       update_params = client_params_conversion(client_params)
       if @client.update(update_params.except(:type))
+        @client = @client.becomes(Client)
         correct_execution format, 'Client was successfully updated.', :ok
       else
+        @client = @client.becomes(Client)
         error_execution format, :edit
       end
     end

@@ -1,3 +1,3 @@
-Given('I create a valid public client') do
-  @valid_client = build(:BusinessClient)
+Given('I create a valid private client') do
+  @valid_client = build(:PrivateClient)
 end
