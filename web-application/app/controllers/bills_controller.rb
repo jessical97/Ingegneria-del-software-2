@@ -1,6 +1,6 @@
 # Controller for the bill list
 class BillsController < ApplicationController
-  before_action :set_bill, only: %I[show edit update destroy]
+  before_action :set_bill, only: %I[show edit destroy]
 
   # GET /bills
   # GET /bills.json
@@ -41,23 +41,14 @@ class BillsController < ApplicationController
   def create
     @bill = Bill.new(bill_params)
 
+    #insert here
+
+
     respond_to do |format|
       if @bill.save
         correct_execution format, 'Bill was successfully created.', :created
       else
         error_execution format, :new
-      end
-    end
-  end
-
-  # PATCH/PUT /bills/1
-  # PATCH/PUT /bills/1.json
-  def update
-    respond_to do |format|
-      if @bill.update(bill_params)
-        correct_execution format, 'Bill was successfully updated.', :ok
-      else
-        error_execution format, :edit
       end
     end
   end

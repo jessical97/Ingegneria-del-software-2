@@ -26,9 +26,10 @@ gem 'country_select'
 # To automate the creation of form
 gem 'simple_form'
 # To create PDF
-gem 'wkhtmltopdf-binary'
+gem 'wkhtmltopdf-binary-edge'
 gem 'pdfkit'
 
+gem 'wicked_pdf'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
