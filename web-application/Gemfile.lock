@@ -277,7 +277,12 @@ GEM
     websocket-driver (0.6.5-java)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
+<<<<<<< HEAD
     wkhtmltopdf-binary-edge (0.12.2.1)
+=======
+    wicked_pdf (1.1.0)
+    wkhtmltopdf-binary-edge (0.12.4.0)
+>>>>>>> 5fa9c27e4caa6f4133affb37cf319b6e4ff95cc0
     xpath (2.1.0)
       nokogiri (~> 1.3)
 

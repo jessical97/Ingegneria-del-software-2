@@ -9,47 +9,56 @@
     <div class="row">
       <div class="col-lg-8 mx-auto">
         <p id="notice"><%= notice %></p>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <p>
+              <strong>Name:</strong>
+              <%= @client.name %>
+            </p>
+          </li>
 
-        <p>
-          <strong>Type:</strong>
-          <%= @client.type %>
-        </p>
+          <% if @client.type == "0" %>
+            <li class="list-group-item">
+              <p>
+                <strong>Surname:</strong>
+                <%= @client.surname %>
+              </p>
+            </li>
+          <% end %>
 
-        <p>
-          <strong>Name:</strong>
-          <%= @client.name %>
-        </p>
+          <li class="list-group-item">
+            <p>
+              <strong>Address:</strong>
+              <%= @client.address %>
+            </p>
+          </li>
+          <li class="list-group-item">
+            <p>
+              <strong>Cap:</strong>
+              <%= @client.cap %>
+            </p>
+          </li>
+          <li class="list-group-item">
+            <p>
+              <strong>City:</strong>
+              <%= @client.city %>
+            </p>
+          </li>
+          <li class="list-group-item">
+            <p>
+              <strong>Country:</strong>
+              <%= @client.country %>
+            </p
+          </li>
+          <li class="list-group-item">
+            <p>
+              <strong>Ssn:</strong>
+              <%= @client.ssn %>
+            </p>
+          </li>
+        </ul>
 
-        <p>
-          <strong>Surname:</strong>
-          <%= @client.surname %>
-        </p>
-
-        <p>
-          <strong>Address:</strong>
-          <%= @client.address %>
-        </p>
-
-        <p>
-          <strong>Cap:</strong>
-          <%= @client.cap %>
-        </p>
-
-        <p>
-          <strong>City:</strong>
-          <%= @client.city %>
-        </p>
-
-        <p>
-          <strong>Country:</strong>
-          <%= @client.country %>
-        </p>
-
-        <p>
-          <strong>Ssn:</strong>
-          <%= @client.ssn %>
-        </p>
-
+        <br>
         <%= link_to 'Edit', edit_client_path(@client) %> |
         <%= link_to 'Back', clients_path %>
       </div>
