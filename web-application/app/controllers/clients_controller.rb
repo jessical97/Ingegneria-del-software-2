@@ -11,7 +11,8 @@ class ClientsController < ApplicationController
     @not_destroyable_client = {}
     @clients = Client.all.map do |t|
       t = ClientFormatter.client_showing(t)
-      if Bill.where(client_id: t.id).count(:all) + Activity.where(client_id: t.id).count(:all) == 0
+      if (Bill.where(client_id: t.id).count(:all) +
+         Activity.where(client_id: t.id).count(:all)).zero?
         @not_destroyable_client[t.id] = true
       end
       t
@@ -53,27 +54,10 @@ class ClientsController < ApplicationController
     end
   end
 
-  def client_conversion(parameter)
-    type = parameter[:type]
-    new_params = parameter.except(:type)
-    @client = if type == '0'
-                PrivateClient.new(new_params)
-              else
-                BusinessClient.new(new_params)
-              end
-  end
-
-  def client_params_conversion(parameter)
-    type = parameter[:type]
-    new_params = parameter.except(:type)
-    new_params[:type] = type == '0' ? :PrivateClient : :BusinessClient
-    new_params
-  end
-
   # POST /clients
   # POST /clients.json
   def create
-    client_conversion client_params
+    @client = ClientFormatter.client_conversion client_params
     respond_to do |format|
       if @client.save
         correct_execution format, 'Client was successfully created.', :created
@@ -88,12 +72,12 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1.json
   def update
     respond_to do |format|
-      update_params = client_params_conversion(client_params)
-      if @client.update(update_params.except(:type))
-        @client = @client.becomes(Client)
+      update_params = ClientFormatter.client_params_conversion(client_params)
+      update_successful = @client.update(update_params.except(:type))
+      @client = @client.becomes(Client)
+      if update_successful
         correct_execution format, 'Client was successfully updated.', :ok
       else
-        @client = @client.becomes(Client)
         error_execution format, :edit
       end
     end

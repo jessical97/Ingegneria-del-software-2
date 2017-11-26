@@ -1,3 +1,4 @@
+# Add the table neccesary to mantain trace of the prices
 class AddPriceTable < ActiveRecord::Migration[5.1]
   def change
     create_table :prices do |t|

@@ -12,4 +12,18 @@ module ClientFormatter
     client[:country] = country_name(client[:country])
     client
   end
+
+  def self.client_conversion(parameter)
+    type = parameter[:type]
+    new_params = parameter.except(:type)
+    return PrivateClient.new(new_params) if type == '0'
+    BusinessClient.new(new_params)
+  end
+
+  def self.client_params_conversion(parameter)
+    type = parameter[:type]
+    new_params = parameter.except(:type)
+    new_params[:type] = type == '0' ? :PrivateClient : :BusinessClient
+    new_params
+  end
 end

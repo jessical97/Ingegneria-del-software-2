@@ -6,16 +6,17 @@ class ActivitiesController < ApplicationController
   # GET /activities.json
   def index
     @activities = Activity.all
-    @clients_names = {};
+    @clients_names = {}
     @activities.each do |value|
-      @clients_names[value.client_id] = Client.find(value.client_id).complete_name;
+      @clients_names[value.client_id] = Client.find(value.client_id)
+                                              .complete_name
     end
   end
 
   # GET /activities/1
   # GET /activities/1.json
   def show
-    @client_name = Client.find(@activity.client_id).complete_name;
+    @client_name = Client.find(@activity.client_id).complete_name
   end
 
   # GET /activities/new
