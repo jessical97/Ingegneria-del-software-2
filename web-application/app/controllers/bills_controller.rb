@@ -41,8 +41,7 @@ class BillsController < ApplicationController
   def create
     @bill = Bill.new(bill_params)
 
-    #insert here
-
+    # insert here
 
     respond_to do |format|
       if @bill.save

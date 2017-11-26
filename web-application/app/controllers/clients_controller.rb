@@ -23,7 +23,7 @@ class ClientsController < ApplicationController
   # GET /clients/1.json
   def show
     element = @client.becomes(Client)
-    element[:type] = (element[:type] == "BusinessClient" ? 1 : 0)
+    element[:type] = (element[:type] == 'BusinessClient' ? 1 : 0)
   end
 
   # GET /clients/new
