@@ -2,3 +2,4 @@ AllCops:
   Exclude:
     - db/schema.rb
     - node_modules/**/*
+    - config/initializers/simple_form_bootstrap.rb
