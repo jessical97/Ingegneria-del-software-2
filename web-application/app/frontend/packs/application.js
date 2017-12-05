@@ -9,7 +9,7 @@
 import turbolinks from 'turbolinks';
 import jQuery from 'jquery'; // eslint-disable-line no-unused-vars
 
-require('../stylesheets/application.css');
+require('../stylesheets/application.sass');
 require('jquery');
 require('jquery-ujs');
 require('bootstrap');
