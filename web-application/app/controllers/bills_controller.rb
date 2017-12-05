@@ -10,7 +10,15 @@ class BillsController < ApplicationController
 
   # GET /bills/1
   # GET /bills/1.json
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "jessica", template: 'bills/show.html.erb'
+      end
+    end
+  end
+
 
   # GET /bills/new
   def new
@@ -47,6 +55,7 @@ class BillsController < ApplicationController
     respond_to do |format|
       if @bill.save
         correct_execution format, 'Bill was successfully created.', :created
+
       else
         error_execution format, :new
       end
