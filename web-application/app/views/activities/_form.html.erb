@@ -1,7 +1,7 @@
 <%= simple_form_for @activity do |form| %>
   <%= form.input :hours %>
   <%= form.select :client_id, collection: clients_list  %>
-  <%= form.button :submit %>
+  <%= form.button :submit, class: "btn btn-primary btn-block" %>
 <% end %>
 <%= javascript_pack_tag 'activity' %>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" rel="stylesheet">
