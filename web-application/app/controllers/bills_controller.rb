@@ -20,10 +20,9 @@ class BillsController < ApplicationController
   # GET /bills/1/edit
   def edit; end
 
-  def correct_execution(format, message, status)
+  def correct_execution(format, status)
     format.html do
-      redirect_to @bill,
-                  notice: message
+      redirect_to @bill
     end
     format.json { render :show, status: status, location: @bill }
   end
@@ -42,10 +41,10 @@ class BillsController < ApplicationController
     @bill = Bill.new(bill_params)
 
     # insert here
-
     respond_to do |format|
       if @bill.save
-        correct_execution format, 'Bill was successfully created.', :created
+        flash[:success] = 'Bill was successfully created.'
+        correct_execution format, :created
       else
         error_execution format, :new
       end
@@ -58,8 +57,8 @@ class BillsController < ApplicationController
     @bill.destroy
     respond_to do |format|
       format.html do
-        redirect_to bills_url,
-                    notice: 'Bill was successfully destroyed.'
+        flash[:success] = 'Bill was successfully destroyed.'
+        redirect_to bills_url
       end
       format.json { head :no_content }
     end
@@ -75,6 +74,8 @@ class BillsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list
   # through.
   def bill_params
+    client_id = params[:bill].delete :client
+    params[:bill][:client_id] = client_id
     params.require(:bill).permit(:import, :client_id)
   end
 end

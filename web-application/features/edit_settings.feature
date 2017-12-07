@@ -6,9 +6,9 @@ Feature: edit setting
   @no-txn
   Scenario: upload a layout
     Given I am on the settings page
-    When I upload on "Invoice Template" the file "validinvoice.html"
+    When I upload on "Invoice template" the file inside "features/file_upload/invoice-format.html"
     And I click on "Submit"
-    Then I see a confirmation message
+    Then I must see an success message
 
   Scenario: upload price
     Given I am on the settings page
@@ -16,4 +16,4 @@ Feature: edit setting
     |Price|
     |9    |
     And I click on "Submit"
-    Then I see a confirmation message
+    Then I must see an success message

@@ -27,10 +27,9 @@ class ActivitiesController < ApplicationController
   # GET /activities/1/edit
   def edit; end
 
-  def correct_execution(format, message, status)
+  def correct_execution(format, status)
     format.html do
-      redirect_to @activity,
-                  notice: message
+      redirect_to @activity
     end
     format.json { render :show, status: status, location: @activity }
   end
@@ -49,7 +48,8 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     respond_to do |format|
       if @activity.save
-        correct_execution format, 'Activity was successfully created.', :created
+        flash[:success] = 'Activity was successfully created.'
+        correct_execution format, :created
       else
         error_execution format, :new
       end
@@ -61,7 +61,8 @@ class ActivitiesController < ApplicationController
   def update
     respond_to do |format|
       if @activity.update(activity_params)
-        correct_execution format, 'Activity was successfully updated.', :ok
+        flash[:success] = 'Activity was successfully updated.'
+        correct_execution format, :ok
       else
         error_execution format, :edit
       end
@@ -74,8 +75,8 @@ class ActivitiesController < ApplicationController
     @activity.destroy
     respond_to do |format|
       format.html do
-        redirect_to activities_url,
-                    notice: 'Activity was successfully destroyed.'
+        flash[:success] = 'Activity was successfully destroyed.'
+        redirect_to activities_url
       end
       format.json { head :no_content }
     end
@@ -91,6 +92,8 @@ class ActivitiesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list
   # through.
   def activity_params
+    client_id = params[:activity].delete :client
+    params[:activity][:client_id] = client_id
     params.require(:activity).permit(:hours, :client_id)
   end
 end

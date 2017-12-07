@@ -9,11 +9,11 @@
   <br>
   <br>
 
-  <%= form.input :type, as: :boolean, boolean_style: :inline %>
+  <%= form.input :type, as: :boolean, input_html: { check: @client.type } %>
   <%= form.input :name %>
   <%= form.input :surname %>
   <%= form.input :address %>
-  <%= form.input :cap %>
+  <%= form.input :cap, :label => "CAP" %>
   <%= form.input :city %>
   <%= form.input(:country, as: :country, priority_countries: ["IT"]) %>
   <%= form.input :ssn %>

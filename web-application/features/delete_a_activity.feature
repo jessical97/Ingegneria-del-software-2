@@ -5,8 +5,9 @@ Feature: delete a activity
   
   @no-txn
   Scenario: delete a activity
-    Given I am on the list of activity
-    And I create a valid public client
+    Given I create a valid public client
     And I create a valid activity
+    And I am on the list of activities
     When I click on "Destroy"
-    Then I must see a success message
+    And I confirm the alert
+    Then I must see an success message

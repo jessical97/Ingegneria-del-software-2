@@ -1,7 +1,7 @@
 <%= stylesheet_pack_tag 'activity' %>
 <%= simple_form_for @activity do |form| %>
   <%= form.input :hours %>
-  <%= form.select :client_id, collection: clients_list  %>
+  <%= form.input :client, :label => "Client", collection: clients_list, label_method: :first, value_method: :last %>
   <%= form.button :submit %>
 <% end %>
 <%= javascript_pack_tag 'activity' %>

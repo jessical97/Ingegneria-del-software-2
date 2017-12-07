@@ -3,5 +3,5 @@ Given('I am on the list of clients') do
 end
 
 Given('I create a valid public client') do
-  @valid_client = build(:BusinessClient)
+  @valid_client = create :BusinessClient
 end

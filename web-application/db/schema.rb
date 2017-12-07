@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124071505) do
+ActiveRecord::Schema.define(version: 20171206104626) do
 
   create_table "activities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.decimal "hours", precision: 10
     t.bigint "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "bills_id"
-    t.index ["bills_id"], name: "index_activities_on_bills_id"
+    t.bigint "bill_id"
+    t.index ["bill_id"], name: "index_activities_on_bill_id"
     t.index ["client_id"], name: "index_activities_on_client_id"
   end
 
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20171124071505) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "activities", "bills"
   add_foreign_key "activities", "clients"
   add_foreign_key "bills", "clients"
 end

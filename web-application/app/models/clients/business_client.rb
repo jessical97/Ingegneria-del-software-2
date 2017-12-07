@@ -7,6 +7,9 @@ class BusinessClient < Client
             format: { with: VALID_CLIENTS_PIVA },
             uniqueness: { case_sensitive: false })
 
+  validates(:name,
+            presence: true)
+
   def complete_name
     name
   end

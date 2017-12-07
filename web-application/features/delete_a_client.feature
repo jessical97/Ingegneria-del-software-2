@@ -5,7 +5,8 @@ Feature: create a client
   
   @no-txn
   Scenario: delete a client
-    Given I am on the list of clients
-    And I create a valid private client
+    Given I create a valid private client
+    And I am on the list of clients
     When I click on "Destroy"
+    And I confirm the alert
     Then I must see an success message

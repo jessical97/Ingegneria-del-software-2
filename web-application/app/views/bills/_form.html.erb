@@ -1,8 +1,6 @@
 <%= stylesheet_pack_tag 'activity' %>
 <%= simple_form_for @bill do |form| %>
-  <div class="form-group">
-    <%= form.select :client_id, clients_list, {}, { class: 'custom-select col-xl-12' } %>
-  </div>
+  <%= form.input :client, :label => "Client", collection: clients_list, input_html: { class: 'custom-select col-xl-12' } %>
   <%= form.button :submit, class: 'btn-primary col-xl-12' %>
 <% end %>
 <%= javascript_pack_tag 'activity' %>

@@ -34,14 +34,13 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     element = @client.becomes(Client)
-    element[:type] = (element[:type] == :BusinessClient ? 1 : 0)
+    element[:type] = (element[:type] == 'BusinessClient')
     @client = element
   end
 
-  def correct_execution(format, message, status)
+  def correct_execution(format, status)
     format.html do
-      redirect_to @client.becomes(Client),
-                  notice: message
+      redirect_to @client.becomes(Client)
     end
     format.json { render :show, status: status, location: @client }
   end
@@ -60,7 +59,8 @@ class ClientsController < ApplicationController
     @client = ClientFormatter.client_conversion client_params
     respond_to do |format|
       if @client.save
-        correct_execution format, 'Client was successfully created.', :created
+        flash[:success] = 'Client was successfully created.'
+        correct_execution format, :created
       else
         @client = @client.becomes(Client)
         error_execution format, :new
@@ -72,11 +72,9 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1.json
   def update
     respond_to do |format|
-      update_params = ClientFormatter.client_params_conversion(client_params)
-      update_successful = @client.update(update_params.except(:type))
-      @client = @client.becomes(Client)
-      if update_successful
-        correct_execution format, 'Client was successfully updated.', :ok
+      if update_client(client_params)
+        flash[:success] = 'Client was successfully updated.'
+        correct_execution format, :ok
       else
         error_execution format, :edit
       end
@@ -90,14 +88,21 @@ class ClientsController < ApplicationController
     client.destroy
     respond_to do |format|
       format.html do
-        redirect_to clients_url,
-                    notice: 'Client was successfully destroyed.'
+        flash[:success] = 'Client was successfully destroyed.'
+        redirect_to clients_url
       end
       format.json { head :no_content }
     end
   end
 
   private
+
+  def update_client(client_params)
+    update_params = ClientFormatter.client_params_conversion(client_params)
+    update_successful = @client.update(update_params.except(:type))
+    @client = @client.becomes(Client)
+    update_successful
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_client
