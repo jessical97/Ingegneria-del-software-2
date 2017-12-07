@@ -14,11 +14,10 @@ class BillsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "jessica", template: 'bills/show.html.erb'
+        render pdf: 'jessica', template: 'bills/show.html.erb'
       end
     end
   end
-
 
   # GET /bills/new
   def new
