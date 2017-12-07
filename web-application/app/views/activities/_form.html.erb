@@ -1,7 +1,7 @@
 <%= stylesheet_pack_tag 'activity' %>
 <%= simple_form_for @activity do |form| %>
   <%= form.input :hours %>
-  <%= form.input :client, :label => "Client", collection: clients_list, label_method: :first, value_method: :last %>
-  <%= form.button :submit %>
+  <%= form.input :client, :label => "Client", collection: clients_list, label_method: :first, value_method: :last, input_html: { class: 'custom-select col-xl-12' } %>
+  <%= form.button :submit, class: 'btn btn-primary btn-block' %>
 <% end %>
 <%= javascript_pack_tag 'activity' %>

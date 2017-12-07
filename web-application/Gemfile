@@ -27,10 +27,9 @@ gem 'country_select'
 gem 'simple_form'
 # To create PDF
 gem 'paperclip', '~> 5.0.0'
-gem 'pdfkit'
+gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary-edge', '~> 0.12.2.1'
 
-gem 'wicked_pdf'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

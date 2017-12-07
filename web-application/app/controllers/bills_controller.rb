@@ -10,7 +10,15 @@ class BillsController < ApplicationController
 
   # GET /bills/1
   # GET /bills/1.json
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "jessica", template: 'bills/show.html.erb'
+      end
+    end
+  end
+
 
   # GET /bills/new
   def new

@@ -15,14 +15,13 @@
   <%= form.input :address %>
   <%= form.input :cap, :label => "CAP" %>
   <%= form.input :city %>
-  <%= form.input(:country, as: :country, priority_countries: ["IT"]) %>
+  <%= form.input :country, as: :country, priority_countries: ["IT"], input_html: { class: 'custom-select col-xl-12' } %>
   <%= form.input :ssn %>
 
   <br>
 
-  <%= form.button :submit %>
+  <%= form.button :submit, class: "btn btn-primary btn-block"  %>
 
-  <br>
   <br>
 <% end %>
 <%= javascript_pack_tag 'client' %>
