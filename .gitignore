@@ -49,3 +49,6 @@ bower.json
 
 # Ignore Byebug command history file.
 .byebug_history
+
+# Coverage test
+app/coverage

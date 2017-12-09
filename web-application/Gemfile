@@ -47,6 +47,9 @@ group :development, :test do
   gem 'pry'
   gem 'selenium-webdriver'
 
+  gem 'rails-erd', require: false
+  gem 'simplecov', require: false
+
   gem 'brakeman'
   gem 'rspec-rails'
   gem 'rubocop'

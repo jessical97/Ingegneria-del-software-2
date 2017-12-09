@@ -72,7 +72,7 @@ class SettingsController < ApplicationController
     last_price = Price.order(created_at: :desc).first
     price = last_price.nil? ? 0.0 : last_price.import
     last_invoice_template = InvoiceTemplate.order(created_at: :desc).first
-    invoice_template = last_invoice_template.nil? ? 0.0 : last_invoice_template
+    invoice_template = last_invoice_template.nil? ? nil : last_invoice_template
     @settings = Setting.new(price: price,
                             invoice_template: invoice_template)
   end

@@ -1,3 +1,6 @@
+require(Rails.root.join('lib', 'bill_generation', 'bill_parameter'))
+require(Rails.root.join('lib', 'bill_generation', 'bill_creation'))
+
 # Controller for the bill list
 class BillsController < ApplicationController
   before_action :set_bill, only: %I[show edit destroy]
@@ -14,7 +17,11 @@ class BillsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: 'jessica', template: 'bills/show.html.erb'
+        send_file(
+          @bill.invoice.path,
+          type: 'application/pdf',
+          disposition: 'inline'
+        )
       end
     end
   end
@@ -35,25 +42,55 @@ class BillsController < ApplicationController
   end
 
   def error_execution(format, status)
-    format.html { render status }
+    format.html do
+      render status
+    end
     format.json do
-      render json: @activity.errors,
+      render json: @bill.errors,
              status: :unprocessable_entity
     end
+  end
+
+  def invoice_and_bill_inizializer(client)
+    number_of_hour = BillParameter.recovery_number_of_hour(client)
+    @bill = BillParameter.bill_fullfilement(
+      @bill, number_of_hour, BillParameter.recovery_price
+    )
+    BillParameter.invoice_parameter_init(
+      client, @bill, number_of_hour
+    )
+  end
+
+  def bill_correct_generation(format)
+    flash[:success] = 'Bill was successfully created.'
+    correct_execution format, :created
+  end
+
+  def error_message_and_redirect(format, msg_to_print)
+    flash[:error] = msg_to_print unless msg_to_print.nil?
+    error_execution format, :new
+  end
+
+  def bill_insert(format, bill_params)
+    @bill = BillParameter.bill_initialization bill_params
+    client = Client.find @bill.client_id
+    invoice_parameter = invoice_and_bill_inizializer(client)
+    @bill.transaction do
+      BillCreation.bill_generation(@bill, invoice_parameter, client)
+    end
+    bill_correct_generation(format)
   end
 
   # POST /bills
   # POST /bills.json
   def create
-    @bill = Bill.new(bill_params)
-
-    # insert here
     respond_to do |format|
-      if @bill.save
-        flash[:success] = 'Bill was successfully created.'
-        correct_execution format, :created
-      else
-        error_execution format, :new
+      begin
+        bill_insert(format, bill_params)
+      rescue ActiveRecord::RecordInvalid
+        error_message_and_redirect(format, bill_error.msg_to_print)
+      rescue BillGenerationException => bill_error
+        error_message_and_redirect(format, bill_error.msg_to_print)
       end
     end
   end

@@ -6,6 +6,11 @@
 <!-- Bill new Section -->
 <section class="lateral-separator top-separator" id="contact">
   <div class="container">
+    <% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>">
+        <%= value %>
+      </div>
+    <% end %>
     <h2 class="text-center">New Bill</h2>
     <hr class="star-primary">
     <div class="row">

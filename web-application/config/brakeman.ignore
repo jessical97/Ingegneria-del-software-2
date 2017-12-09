@@ -1,0 +1,26 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "acb791848fa3fe5de47d124f669313cfdcf38d1c89694f789ab2676f707eb6f6",
+      "check_name": "SendFile",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/bills_controller.rb",
+      "line": 21,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(Bill.find(params[:id]).invoice.path, :type => \"application/pdf\", :disposition => \"inline\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "BillsController",
+        "method": "show"
+      },
+      "user_input": "Bill.find(params[:id]).invoice.path",
+      "confidence": "Medium",
+      "note": "For now don't seem a risk for the system because it accept as input only number and also the the insertion of different path is see by rails as a different route and if the bill isn't present into the database an exception is generated to check in the future"
+    }
+  ],
+  "updated": "2017-12-10 00:44:08 +0100",
+  "brakeman_version": "4.0.1"
+}

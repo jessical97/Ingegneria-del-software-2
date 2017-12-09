@@ -9,6 +9,10 @@ require 'cucumber/rails'
 require 'pry'
 require 'factory_bot_rails'
 require 'capybara-screenshot/cucumber'
+require 'simplecov'
+
+# Start coverage test
+SimpleCov.start
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any

@@ -32,7 +32,7 @@ rspec:
 
 brakeman:
   script:
-    - bundle exec brakeman -z -q
+    - bundle exec brakeman -z -q -i config/brakeman.ignore
 
 rubocop:
   script:
