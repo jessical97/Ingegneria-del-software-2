@@ -17,3 +17,11 @@ Feature: edit setting
     |9    |
     And I click on "Submit"
     Then I must see an success message
+
+  Scenario: try to update with a price less than 0
+    Given I am on the settings page
+    When I fill in the form
+    |Price|
+    |-9   |
+    And I click on "Submit"
+    Then I must see an error

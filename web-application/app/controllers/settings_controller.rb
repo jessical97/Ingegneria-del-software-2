@@ -31,7 +31,6 @@ class SettingsController < ApplicationController
         flash[:success] = 'Settings was successfully updated.'
         correct_execution format, :ok
       else
-        flash[:error] = 'Error during the update of the settings.'
         error_execution format, :index
       end
     end
@@ -42,7 +41,43 @@ class SettingsController < ApplicationController
   def settings_update(settings_params)
     price_correct = price settings_params
     invoice_template_correct = invoice_template settings_params
+    errors_sum(price_correct, invoice_template_correct)
     invoice_template_correct && price_correct
+  end
+
+  def errors_sum(price_correct, invoice_template_correct)
+    unless price_correct
+      @settings = error_copy @price, @settings,
+                             :import, :price
+    end
+    return if invoice_template_correct
+    @settings = error_copy originElement,
+                           destinationElement,
+                           :template,
+                           :invoice_template
+  end
+
+  def copy_single_errors(destination_element, destination_symbol,
+                         origin_element, error, attribute)
+    destination_element.add_errors destination_symbol,
+                                   origin_element
+      .errors
+      .details[attribute][0][:error],
+                                   error
+  end
+
+  def error_copy(origin_element, destination_element,
+                 origin_symbol, destination_symbol)
+    origin_element.errors.each do |attribute, error|
+      if attribute == origin_symbol
+        copy_single_errors destination_element, destination_symbol,
+                           origin_element, error, attribute
+      else
+        copy_single_errors destination_element, origin_symbol,
+                           origin_element, error, attribute
+      end
+    end
+    destination_element
   end
 
   def price(settings_params)

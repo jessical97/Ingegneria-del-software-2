@@ -3,14 +3,6 @@ When('I click on {string}') do |string|
   click_on string
 end
 
-When('I check the {string} option') do |string|
-  check string
-end
-
-When('I uncheck the {string} option') do |string|
-  uncheck string
-end
-
 When('I select in the {string} dropdown {string}') do |field, option_to_select|
   select(option_to_select, from: field)
   @insert = {} if @insert.nil?

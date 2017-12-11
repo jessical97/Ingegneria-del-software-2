@@ -1,4 +1,4 @@
-# README
+# INSTALL
 
 * **Ruby version:**
 
@@ -14,7 +14,7 @@
 
 * **Database creation:**
 
-   For create the database you need to connect to mysql instance by a mysql client create a database and a user with CRUD on rows and tables privileges. The value into configuration file need to be edit
+   For create the database you need to connect to MySQL instance by a mysql client create a database and a user with CRUD on rows and tables privileges. The value into configuration file need to be edit
 
 * **Database initialization:**
 
@@ -22,11 +22,11 @@
 
 * **Test suite:**
 
-   The project commit policy is composed of two static linter for testing quality code (`bundle exec rubocop`) and security problem (`bundle exec brakeman -z -q`). The test suite is `rspec`
+   The project commit policy is composed of two static linter for testing quality code (`bundle exec rubocop`) and security problem (`bundle exec brakeman -z -q`). The test suite is `rspec` (inside test implemented only a small part of test) and `bundle exec cucumber`
 
 * **Deployment instructions:**
 
-   After installed all the dependency and creating the database we have to execute
+   After installed all the dependency, creating the database and migrate it to the latest version we have to execute
    ```sh
      gem install bundler # install gem management system
      bundle install # install all the gem require

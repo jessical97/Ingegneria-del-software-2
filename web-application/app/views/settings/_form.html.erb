@@ -1,7 +1,17 @@
 <%= form_tag('/settings', method: 'put', multipart: true) do %>
   <%= label_tag "setting[price]", "Price" %>
   <%= number_field_tag "setting[price]", settings.price %>
+  <% if settings.errors.messages[:price] %>
+    <span class="help-block">
+      <%= settings.errors.messages[:price][0] %>
+    </span>
+  <% end %>
   <%= label_tag "setting[invoice_template]", "Invoice template" %>
   <%= file_field_tag "setting[invoice_template]" %>
+  <% if settings.errors.messages[:invoice_template] %>
+    <span class="help-block">
+      <%= settings.errors.messages[:invoice_template][0] %>
+    </span>
+  <% end %>
   <%= submit_tag 'Submit' %>
 <% end %>

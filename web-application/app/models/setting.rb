@@ -13,50 +13,56 @@ class Setting
   define_model_callbacks :destroy, only: %I[before after]
 
   attr_accessor :invoice_template_file_name
+  attr_accessor :name
+  attr_reader   :errors
   attr_reader :price, :invoice_template
 
   has_attached_file :invoice_template
-  validates_attachment :invoice_template, content_type: {
-    content_type: 'text/html'
-  }
 
   def initialize(attributes = {})
     @price = attributes[:price]
     @invoice_template = attributes[:invoice_template]
+    @errors = ActiveModel::Errors.new(self)
   end
 
-  def to_model
-    self
-    # You will get to_model error, if you don't have this dummy method
+  # The following methods are needed to be minimally implemented
+  def read_attribute_for_validation(attr)
+    send(attr)
   end
 
-  def valid?
-    true
+  def import; end
+
+  def self.human_attribute_name(attr, _options = {})
+    attr
   end
 
-  def new_record?
-    true
+  def self.lookup_ancestors
+    [self]
   end
 
-  def destroyed?
-    true
-  end
+  # def to_model
+  #   self
+  #   # You will get to_model error, if you don't have this dummy method
+  # end
 
-  def errors
-    obj = Object.new
+  # def valid?
+  #   true
+  # end
 
-    def obj.[](_key)
-      []
-    end
+  # def new_record?
+  #   true
+  # end
 
-    def obj.full_messages
-      []
-    end
-    obj
+  # def destroyed?
+  #   true
+  # end
+
+  def add_errors(element, type, message)
+    @errors.add(element, type, message: message)
   end
 
   # You need this otherwise you get an error
-  def persisted?
-    false
-  end
+  # def persisted?
+  #   false
+  # end
 end

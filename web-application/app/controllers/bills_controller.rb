@@ -90,6 +90,7 @@ class BillsController < ApplicationController
       rescue ActiveRecord::RecordInvalid
         error_message_and_redirect(format, bill_error.msg_to_print)
       rescue BillGenerationException => bill_error
+        @bill = bill_error.bill unless bill_error.bill.nil?
         error_message_and_redirect(format, bill_error.msg_to_print)
       end
     end
@@ -120,6 +121,6 @@ class BillsController < ApplicationController
   def bill_params
     client_id = params[:bill].delete :client
     params[:bill][:client_id] = client_id
-    params.require(:bill).permit(:import, :client_id)
+    params.require(:bill).permit(:client_id)
   end
 end

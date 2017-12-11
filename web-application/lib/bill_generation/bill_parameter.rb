@@ -7,7 +7,8 @@ module BillParameter
     unless bill.valid?
       raise BillGenerationException.new(
         'Bill isn\'t valid',
-        nil
+        nil,
+        bill
       )
     end
     bill
