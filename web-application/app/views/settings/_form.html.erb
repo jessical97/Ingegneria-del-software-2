@@ -1,17 +1,21 @@
 <%= form_tag('/settings', method: 'put', multipart: true) do %>
-  <%= label_tag "setting[price]", "Price" %>
-  <%= number_field_tag "setting[price]", settings.price %>
-  <% if settings.errors.messages[:price] %>
-    <span class="help-block">
-      <%= settings.errors.messages[:price][0] %>
-    </span>
-  <% end %>
-  <%= label_tag "setting[invoice_template]", "Invoice template" %>
-  <%= file_field_tag "setting[invoice_template]" %>
-  <% if settings.errors.messages[:invoice_template] %>
-    <span class="help-block">
-      <%= settings.errors.messages[:invoice_template][0] %>
-    </span>
-  <% end %>
-  <%= submit_tag 'Submit' %>
+  <div class="form-group decimal required setting_price">
+    <%= label_tag "setting[price]", "Price", class: "control-label decimal required" %>
+    <%= number_field_tag "setting[price]", settings.price, class: "form-control numeric decimal required" %>
+    <% if settings.errors.messages[:price] %>
+      <span class="help-block">
+        <%= settings.errors.messages[:price][0] %>
+      </span>
+    <% end %>
+  </div>
+  <div class="form-group decimal required setting_invoice_template">
+    <%= label_tag "setting[invoice_template]", "Invoice template", class: "control-label required" %>
+    <%= file_field_tag "setting[invoice_template]", class: "form-control form-control-file required" %>
+    <% if settings.errors.messages[:invoice_template] %>
+      <span class="help-block">
+        <%= settings.errors.messages[:invoice_template][0] %>
+      </span>
+    <% end %>
+  </div>
+  <%= submit_tag 'Submit', class: "btn btn-default btn btn-primary btn-block" %>
 <% end %>
