@@ -1,14 +1,15 @@
 # FORTUNE
-Fortune is a web-app, to create invoices. We tried to make the graphics as intuitive as possible in order to simplify and optimize the training time of future users. Major feature are management of users, activities and bills. This feature can be access directly from the homepage.
+Fortune is a web-app, to create invoices. We tried to make the graphics as intuitive as possible in order to simplify and optimize the training time of future users. Major feature are management of [clients](#client), [activities](#activity) and [bills](#bill). This feature can be access directly from the homepage.
 
 
 [![Home screenshot](./doc/img/screencapture-2.png)](./doc/img/screencapture-2.png)
 
 ## Client
-In the "Clients" page you can have a list of all the customers for which that user works. From this you can insert a  new client.
+You can show you're list of customers. Also you can make the minimal operation of delete update and insertion on the client. Also the system deny you to execute delete operation if you have create some bills or activities about it.
 
 [![New client screenshot](./doc/img/screencapture-4.png)](./doc/img/screencapture-4.png)
-The system can maintain trace of the difference between a Business Client and a private client, so don’t require to insert at example of the surname and permit to evalutate different identification format.
+
+The system can maintain trace of the difference between a business client and a private client, so don’t require to insert at example of the surname and you're sure that the identification code insert is correct.
 
 ## Activity
 You can insert the activity made by a client, simply selecting the client and the hour worked.
@@ -20,27 +21,20 @@ The application permit to remove only the activities not billed, so you can be s
 [![Activities list screenshot](./doc/img/screencapture-8.png)](./doc/img/screencapture-8.png)
 
 ## Bill
-The system permit to create new bill in seconds by only select the client other data are automatic filled by the system.
+The system permit to create new bill in seconds by only select the client, other data are automatic filled by the system.
 
 [![Bill new screenshot](./doc/img/screencapture-5.png)](./doc/img/screencapture-5.png)
 
 After the bill creation you can show the invoice PDF and print or download it by clicking to “Show PDF”.
-
-[![Bill list screenshot](./doc/img/screencapture-7.png)](./doc/img/screencapture-7.png)
-
-The Invoice contain the data about the customer, the hours worked and the relative amount, based on the price for hour that you have set.
+The Invoice contain the data about the customer, the hours worked and the relative amount, based on the price for hour that you have set. If you like this template take from [Sparksuite Simple HTML Invoice Template](https://github.com/sparksuite/simple-html-invoice-template)
 
 [![Bill list screenshot](./doc/img/invoice.jpg)](./doc/img/invoice.jpg)
 
-## Settings
+## Other application function
 
-The invoices template model can upload on the settings page. 
+By the menu you can upload a custom template by the settings page or change the price for hour used on the bill.
 
 [![Settings screenshot](./doc/img/screencapture-9.png)](./doc/img/screencapture-9.png)
 
-
 ## Install
-Would you try our product follow the step on [doc/INSTALL.md](./doc/INSTALL.md) file.
-## What did(not) we like in the group?
-
-As a group we worked well, setting our deadlines and priorities. We followed the User Stories done at the beginning, although very often we wanted to expand them by inserting new features. It was interesting to work in a team especially to be able to compare and to combine different skills of the components of the group. However there was some communication problem. This came from a lack of experience on different IT sector and a different view about the quality.
+Would you try our product? Follow step on [doc/INSTALL.md](./doc/INSTALL.md) file.
