@@ -1,7 +1,7 @@
 # FORTUNE
 Fortune is a web-app, to create invoices. We tried to make the graphics as intuitive as possible in order to simplify and optimize the training time of future users. Major feature are management of users, activities and bills. This feature can be access directly from the homepage.
 
-[![Home screenshot](.doc/img/screencapture-2.png)](.doc/img/screencapture-2.png)
+[![Home screenshot](.doc/img/invoice.jpg)](.doc/img/invoice.jpg)
 
 ## Client
 In the "Clients" page you can have a list of all the customers for which that user works. From this you can insert a  new client.
