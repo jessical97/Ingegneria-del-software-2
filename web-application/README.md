@@ -26,7 +26,7 @@ The system permit to create new bill only by select the client. Other data are a
 [![Bill new screenshot](./doc/img/screencapture-5.png)](./doc/img/screencapture-5.png)
 
 After the bill creation you can show the invoice PDF and print or download it by clicking “Show PDF”.
-The Invoice contain the data about the customer, the hours worked and the relative amount, based on the price for hour that you have set. If you like this template take from [Sparksuite Simple HTML Invoice Template](https://github.com/sparksuite/simple-html-invoice-template)
+The Invoice contain the data about the customer, the hours worked and the relative amount, based on the price for hour that you have set. Our sample template becames from [Sparksuite Simple HTML Invoice Template](https://github.com/sparksuite/simple-html-invoice-template). It's edited to accept the bill's parameters, you can find a copy into [./features/file_upload/invoice-format.html](./features/file_upload/invoice-format.html).
 
 [![Bill list screenshot](./doc/img/invoice.jpg)](./doc/img/invoice.jpg)
 
